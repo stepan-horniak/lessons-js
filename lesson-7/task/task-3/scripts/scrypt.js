@@ -30,6 +30,6 @@ addEventListener("load", function () {
     .querySelector(".answer")
     .insertAdjacentHTML(
       "beforeend",
-      `<p>Сума чисел: ${sum}</p><p>Добуток чисел: ${mult}</p><p>Середнє арифметичне: ${average}</p><p>Мінімальне значення: ${min}</p>`
+      `<p>ви ввели ${a},${b},${c},${d}</p><p>Сума чисел: ${sum}</p><p>Добуток чисел: ${mult}</p><p>Середнє арифметичне: ${average}</p><p>Мінімальне значення: ${min}</p>`
     )
 })
