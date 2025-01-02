@@ -1,34 +1,44 @@
 "usestrict"
 addEventListener("load", function () {
   const answer = document.querySelector(".answer")
-  let min = 0
+
+  let min = 1
   let max = 3
   let answerText = ""
-  let score = 1
   for (let i = 0; i < max; i++) {
     answerText += "<table><tbody>"
     for (let f = 1; f <= max; f++) {
-      answerText += `<th>${score}`
+      answerText += `<th>${f}`
       answerText += "</th>"
-      score++
     }
     answerText += "</table></tbody>"
   }
-  let random = min + Math.floor(Math.random() * (score - min) + 1)
   answer.insertAdjacentHTML("beforeend", answerText)
+  let randomNumRow = min + Math.floor(Math.random() * (max - min + 1))
+  let randomNumColumn = min + Math.floor(Math.random() * (max - min + 1))
+
   alert("гра морський бій")
 
-  for (let user = 0; user < 4; user++) {
-    let userNumber = parseInt(
+  for (let user = 4; user > 0; user--) {
+    let userNumberRow = parseInt(
       prompt(
-        "введіть номер на якій позиції розташований корабель від 1 до 9 у  вас є 4 спроби",
+        `введіть номер рядка на якій позиції розташований корабель від ${min} до ${max} залишилось ${user} спроб`,
         "3"
       )
     )
-    if (userNumber === random) {
+    let userNumberColum = parseInt(
+      prompt(
+        `введіть номер колонки на якій позиції розташований корабель від ${min} до ${max} залишилось ${user} спроб`,
+        "3"
+      )
+    )
+    if (randomNumColumn === userNumberColum && randomNumRow === userNumberRow) {
       answer.insertAdjacentHTML("beforeend", "ви вгадали")
       break
-    } else if (isNaN(userNumber)) break
+    } else if (isNaN(userNumberRow) || isNaN(userNumberColum)) break
+    else
+      confirm(
+        `пробуйте ще позиція рядка ${randomNumRow} col ${randomNumColumn}`
+      )
   }
-  answer.insertAdjacentHTML("beforeend", "ви не вгадали")
 })

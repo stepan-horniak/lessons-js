@@ -4,12 +4,12 @@ addEventListener("load", function () {
   if (userNumber < 1 || userNumber > 10 || isNaN(userNumber))
     alert("некоректне число")
   else {
-    confirm("в компютера є 3 спроби щоб відгадати ваше число")
+    confirm("компютер буде відгадувати поки не відгалає")
     for (let i = 0; i < Infinity; i++) {
       let numberComputer = Math.floor(Math.random() * 10) + 1
       let answerComputer = confirm(`${numberComputer} правильно?`)
       if (userNumber === numberComputer) {
-        alert("брехун компютер вгадав число")
+        alert("компютер вгадав число")
         break
       } else if (answerComputer === true) {
         alert("компютер вгадав число")

@@ -2,16 +2,17 @@
 addEventListener("load", function () {
   const answer = document.querySelector(".answer")
 
-  let summOddNumbers = 0
-  for (let i = 0; i < 5; i++) {
-    const userNumber = parseInt(
-      prompt(
-        "задайте числa а я знайду суму всіх непарних чисел, якщо досить нажміть скасувати",
-        ""
-      )
-    )
-    if (isNaN(userNumber)) break
-    if (userNumber % 2 === 1) summOddNumbers += userNumber
+  const startNumber = parseInt(prompt("задайте початкове число", ""))
+  const endNumber = parseInt(prompt("задайте кінцеве число", ""))
+  let summOddNumbers = 0,
+    count = 0
+
+  for (let i = startNumber; i <= endNumber; i++) {
+    if (i % 2 === 1) {
+      summOddNumbers += i
+      count++
+    }
+    if (count === 5) break
   }
   answer.insertAdjacentHTML("beforeend", summOddNumbers)
 })
