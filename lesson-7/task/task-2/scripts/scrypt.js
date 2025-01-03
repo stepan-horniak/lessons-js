@@ -17,12 +17,9 @@ addEventListener("load", function () {
         break
       default:
         throw new Error("некоректні дані")
-        break
     }
     return workingDay
   }
   const workingDay = getWorkingDay(userDay)
-  const answer = document
-    .querySelector(".answer")
-    .insertAdjacentHTML("beforeend", workingDay)
+  document.querySelector(".answer").insertAdjacentHTML("beforeend", workingDay)
 })

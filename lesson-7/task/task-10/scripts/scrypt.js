@@ -1,12 +1,10 @@
 "usestrict"
 addEventListener("load", function () {
   function findAverageValueTemp(...num) {
-    let averageValue = []
     let countCverageValue = 0
     let result = 0
     for (const element of num) {
       if (element > 0) {
-        averageValue.push(element)
         result += element
         countCverageValue++
       }

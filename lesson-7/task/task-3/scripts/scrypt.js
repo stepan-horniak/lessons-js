@@ -26,7 +26,7 @@ addEventListener("load", function () {
   let average = getAverage(a, b, c, d)
   let min = getMin(a, b, c, d)
 
-  const answer = document
+  document
     .querySelector(".answer")
     .insertAdjacentHTML(
       "beforeend",

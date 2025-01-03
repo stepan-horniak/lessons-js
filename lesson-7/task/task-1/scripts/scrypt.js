@@ -42,12 +42,9 @@ addEventListener("load", function () {
         break
       default:
         throw new Error("некоректні дані")
-        break
     }
     return monthName
   }
   const monthName = getMonthName(userMonth)
-  const answer = document
-    .querySelector(".answer")
-    .insertAdjacentHTML("beforeend", monthName)
+  document.querySelector(".answer").insertAdjacentHTML("beforeend", monthName)
 })

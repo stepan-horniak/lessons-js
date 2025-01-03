@@ -22,7 +22,7 @@ addEventListener("load", function () {
   getKilogramsInPounds(userNumber)
   getKilometersToMiles(userNumber)
 
-  const answer = document
+  document
     .querySelector(".answer")
     .insertAdjacentHTML(
       "beforeend",

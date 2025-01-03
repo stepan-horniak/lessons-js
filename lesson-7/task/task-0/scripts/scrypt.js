@@ -26,13 +26,9 @@ addEventListener("load", function () {
         break
       default:
         throw new Error("некоректні дані")
-
-        break
     }
     return season
   }
   const season = getSeason(userMonth)
-  const answer = document
-    .querySelector(".answer")
-    .insertAdjacentHTML("beforeend", season)
+  document.querySelector(".answer").insertAdjacentHTML("beforeend", season)
 })
