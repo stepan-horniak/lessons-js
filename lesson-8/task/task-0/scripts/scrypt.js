@@ -10,35 +10,38 @@ function addRatingUser(userNum) {
   }
 }
 
-function getCategoryRatingAndAverage(scores) {
+function getAverageRating(scores) {
   let total = 0
-  let hasTwo = false
-  let hasThree = false
-
   for (let i = 0; i < scores.length; i++) {
     total += scores[i]
-
-    if (scores[i] === 2) hasTwo = true
-    else if (scores[i] === 3) hasThree = true
   }
-
-  const average = total / scores.length
-
-  let category
-  if (hasTwo) {
-    category = "Двійочник (має хоча би одну двійку)"
-  } else if (hasThree) {
-    category = "Трійочник (є хоча би одна трійка)"
-  } else if (average === 5) {
-    category = "Відмінник"
-  } else {
-    category = "Хорошист (оцінки добре і відмінно)"
-  }
-  return [category, average]
+  return total / scores.length
 }
 
+function getCategoryRating(scores) {
+  let minScore = Math.min(...scores)
+
+  let category = ``
+  switch (minScore) {
+    case 2:
+      category += `Двійочник`
+      break
+
+    case 3:
+      category += `Трійочник`
+      break
+    case 4:
+      category += `Хорошист`
+      break
+    case 5:
+      category += `Відмінник`
+      break
+  }
+
+  return category
+}
 addRatingUser(userNumberRating)
 document.querySelector(".answer").innerHTML = `
 <p>масив оцінок ${ratingUser}</p>
-<p>середній бал ${getCategoryRatingAndAverage(ratingUser)[1]}</p>
-<p>категорія ${getCategoryRatingAndAverage(ratingUser)[0]}</p>`
+<p>середній бал ${getAverageRating(ratingUser)}</p>
+<p>категорія ${getCategoryRating(ratingUser)}</p>`
