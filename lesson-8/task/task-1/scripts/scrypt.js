@@ -1,6 +1,6 @@
 "usestrict"
 addEventListener("load", function () {
-  let visitorsShopPerWeek = [10, 25, 55, 12, 8, 321, 100]
+  let visitorsShopPerWeek = [10, 12, 8, 321, 100, 8, 321]
   function getLessThan20PerWeek(visitors) {
     let lessThan20 = ""
     for (let i = 0; i < visitors.length; i++) {
@@ -12,30 +12,27 @@ addEventListener("load", function () {
   }
 
   function getMinimumPerWeek(visitors) {
-    let max = Math.max(...visitors)
-
-    let min = 0
+    let min = Math.min(...visitors)
+    let numberDay = ``
     for (let i = 0; i < visitors.length; i++) {
-      if (visitors[i] < max) {
-        min = `${i + 1}`
-        max = visitors[i]
+      if (visitors[i] === min) {
+        numberDay += `${i + 1},`
       }
     }
-    return min
+    return numberDay
   }
 
   function getMaximumPerWeek(visitors) {
-    let min = Math.min(...visitors)
-    let max = 0
+    let max = Math.max(...visitors)
+    let numberDay = ``
 
     for (let i = 0; i < visitors.length; i++) {
-      if (visitors[i] > min) {
-        max = `${i + 1}`
-        min = visitors[i]
+      if (visitors[i] === max) {
+        numberDay += `${i + 1},`
       }
     }
 
-    return max
+    return numberDay
   }
 
   function getTotalVisitorsPerWeek(visitors) {
@@ -50,7 +47,7 @@ addEventListener("load", function () {
   }
   document.querySelector(".answer").insertAdjacentHTML(
     "beforeend",
-    `<p>масив чисел : let visitorsShopPerWeek = [10, 25, 55, 12, 8, 321, 100]</p>
+    `<p>масив чисел : [${visitorsShopPerWeek}]</p>
       <p>номери днів, протягом яких кількість відвідувачів була меншою за 20 : ${getLessThan20PerWeek(
         visitorsShopPerWeek
       )}</p>

@@ -1,14 +1,14 @@
 "usestrict"
 addEventListener("load", function () {
   let ratingStudents = [2, 4, 5, 3, 2, 4, 5, 3, 4]
-  function deuces(array) {
+  function countNumberDeuces(array) {
     count = 0
     for (const element of array) {
       if (element === 2) count++
     }
     return count
   }
-  function goodGrades(array) {
+  function countGoodGrades(array) {
     count = 0
     for (const element of array) {
       if (element === 4 || element === 5) count++
@@ -16,7 +16,7 @@ addEventListener("load", function () {
 
     return count
   }
-  function belowAverage(array) {
+  function countLessAverage(array) {
     count = 0
     for (const element of array) {
       if (element === 3) count++
@@ -28,11 +28,11 @@ addEventListener("load", function () {
     "beforeend",
     `
     <p> оцінки учня : let ratingStudents = [2, 4, 5, 3, 2, 4, 5, 3, 4]</p>
-        <p>двійок : ${deuces(ratingStudents)}</p>
-    <p>кількість хороших оцінок (добре, відмінно) : ${goodGrades(
+        <p>двійок : ${countNumberDeuces(ratingStudents)}</p>
+    <p>кількість хороших оцінок (добре, відмінно) : ${countGoodGrades(
       ratingStudents
     )}</p>
-    <p>кількість оцінок, які нижче середнього : ${belowAverage(
+    <p>кількість оцінок, які нижче середнього : ${countLessAverage(
       ratingStudents
     )}</p>
     `
