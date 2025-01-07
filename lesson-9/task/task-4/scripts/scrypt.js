@@ -7,5 +7,8 @@ addEventListener("load", function () {
   }
   document
     .querySelector(".answer")
-    .insertAdjacentHTML("beforeend", `[${result}]`)
+    .insertAdjacentHTML(
+      "beforeend",
+      `масив елементів: [45, 32, 542, 532, 76, 954, 5343, 357, 22, 77, 99] <br>елементи більші за 100: [${result}]`
+    )
 })

@@ -2,18 +2,16 @@
 addEventListener("load", function () {
   const names = [
     "Тимофій",
-    "Тимур",
+    "тимур",
     "Богдан",
-    "Вікторія",
+    "вікторія",
     "Олександра",
     "Соломія",
-    "Анастасія",
-    "Максим",
+    "анастасія",
+    "максим",
   ]
 
-  let firstLetterNames = names.map(function (elem) {
-    return elem[0]
-  })
+  let firstLetterNames = names.map((el) => el[0].toLocaleUpperCase())
 
   document
     .querySelector(".answer")

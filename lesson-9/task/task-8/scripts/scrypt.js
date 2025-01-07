@@ -1,14 +1,16 @@
 "usestrict"
 addEventListener("load", function () {
   const numbersAuto = [
-    "aa3454ab",
+    "Aa3454ab",
     "be432kk",
     "ao2345ao",
     "oa123oa",
     "op555ka",
-    "aa456yi",
+    "Aa456yi",
   ]
-  let startingWithA = numbersAuto.filter((num) => num.startsWith("a"))
+  let startingWithA = numbersAuto.filter((num) =>
+    num.toLocaleLowerCase().startsWith("a")
+  )
 
   document.querySelector(".answer").insertAdjacentHTML(
     "beforeend",
