@@ -1,24 +1,36 @@
 "usestrict"
 addEventListener("load", function () {
+  const numbers = []
+
   function getRandomNum(min = 1, max = 100) {
-    return min + Math.floor(Math.random() * (max - min) + 1)
+    return min + Math.floor(Math.random() * (max - min + 1))
   }
-  function getArrayRandomNumbers(number, array) {
-    for (let i = 0; i < number; i++) {
-      array.push(getRandomNum())
+
+  function getArrayRandomNumbers(numberUser) {
+    for (let i = 0; i < numberUser; i++) {
+      numbers.push(getRandomNum())
     }
   }
-  const numbers = []
-  getArrayRandomNumbers(10, numbers)
+
+  getArrayRandomNumbers(10)
+
   function getNumDivide3(array) {
     let count = 0
+    let numbers = []
     for (const element of array) {
       if (element % 3 === 0 && element % 7 !== 0) {
         count++
+        numbers.push(element)
       }
     }
-    return count
+    return { count, numbers }
   }
+  let result = getNumDivide3(numbers)
 
-  document.querySelector(".answer").insertAdjacentHTML("beforeend", ``)
+  document
+    .querySelector(".answer")
+    .insertAdjacentHTML(
+      "beforeend",
+      `масив чисел : ${numbers} <br> кількість : ${result.count} які цифри : ${result.numbers}`
+    )
 })

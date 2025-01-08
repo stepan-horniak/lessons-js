@@ -12,7 +12,11 @@ addEventListener("load", function () {
     }
     return sum
   }
-  console.log(getSumNumbers(firstNum, lastNum, numbers))
 
-  document.querySelector(".answer").insertAdjacentHTML("beforeend", ``)
+  document.querySelector(".answer").insertAdjacentHTML(
+    "beforeend",
+    `
+      масив чисел : ${numbers} <br>
+      сума : ${getSumNumbers(firstNum, lastNum, numbers)}`
+  )
 })
