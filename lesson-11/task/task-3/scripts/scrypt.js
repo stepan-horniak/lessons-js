@@ -49,6 +49,10 @@ if (confirm("почнемо гру")) {
     countShot = 25
 
   while (countShip) {
+    if (countShot === 0) {
+      alert("У вас закінчилися постріли. Наступного разу пощастить!")
+      break
+    }
     let userNumRow =
       parseInt(
         prompt(
@@ -72,8 +76,6 @@ if (confirm("почнемо гру")) {
       userNumRow > number ||
       userNumColumn < 0 ||
       userNumColumn > number ||
-      userNumRow === null ||
-      userNumColumn === null ||
       isNaN(userNumRow) ||
       isNaN(userNumColumn)
     ) {
@@ -81,14 +83,9 @@ if (confirm("почнемо гру")) {
       continue
     }
 
-    if (countShot === 0) {
-      alert("У вас закінчилися постріли. Наступного разу пощастить!")
-      break
-    }
     if (field[userNumRow][userNumColumn] === 1) {
       alert("попав")
-      field[userNumRow][userNumColumn] = 0
-      countShip--
+      field[userNumRow][userNumColumn] = 0 == countShip--
     } else {
       if (!confirm("не попав, продовджимо")) break
     }
