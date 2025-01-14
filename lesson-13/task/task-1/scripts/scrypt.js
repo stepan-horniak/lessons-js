@@ -2,25 +2,28 @@
 let array = [1, 2, 3]
 
 function generateSubsets(array) {
-  const result = [] // Тут ми зберігатимемо всі підмножини
+  const result = [] // Тут ми зберігаємо всі підмножини
 
-  function helper(index, subset) {
-    // Коли індекс досягає довжини масиву, додаємо поточну підмножину в результат
+  // Функція, яка додає підмножини до результату
+  function helper(index, currentSubset) {
+    // Якщо ми пройшли всі елементи масиву
     if (index === array.length) {
-      result.push(subset)
+      result.push(currentSubset) // Додаємо поточну підмножину до результату
       return
     }
 
-    // Не включаємо поточний елемент в підмножину
-    helper(index + 1, subset)
+    // Розглядаємо два варіанти:
+    // 1. Не додаємо поточний елемент
+    helper(index + 1, currentSubset)
 
-    // Включаємо поточний елемент в підмножину
-    helper(index + 1, subset.concat(array[index]))
+    // 2. Додаємо поточний елемент
+    helper(index + 1, [...currentSubset, array[index]])
   }
 
-  // Запускаємо рекурсивну функцію
+  // Запускаємо рекурсію з першого елемента і порожньої підмножини
   helper(0, [])
 
   return result
 }
+
 console.log(generateSubsets(array))

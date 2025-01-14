@@ -1,43 +1,37 @@
-"usestrict"
 const athletes = ["Usain", "Michael", "Serena", "Kylian"]
-// Функція для генерації всіх перестановок
+
 function generatePermutations(array) {
-  const result = []
+  const allPermutations = []
 
-  // Базовий випадок: якщо в масиві тільки один елемент, повертаємо його як є
+  // Базовий випадок: якщо в масиві тільки один елемент, повертаємо його
   if (array.length === 1) {
-    result.push(array)
-    return result
+    allPermutations.push(array) // Один елемент, перестановка вже готова
+    return allPermutations
   }
-
-  // Для кожного елемента масиву генеруємо перестановки для решти
+  // Для кожного елемента масиву генеруємо перестановки для решти елементів
   for (let i = 0; i < array.length; i++) {
-    const currentElement = array[i]
-    const remainingElements = []
-
-    // Створюємо масив решти елементів без поточного
+    const currentAthlete = array[i] // Поточний спортсмен
+    const remainingAthletes = [] // Массив інших спортсменів
+    // Створюємо масив без поточного спортсмена
     for (let j = 0; j < array.length; j++) {
       if (i !== j) {
-        remainingElements.push(array[j])
+        remainingAthletes.push(array[j])
       }
     }
-
-    // Рекурсивно генеруємо перестановки для решти елементів
-    const remainingPermutations = generatePermutations(remainingElements)
-
-    // Додаємо поточний елемент до кожної перестановки решти
+    // Рекурсивно генеруємо перестановки для решти спортсменів
+    const remainingPermutations = generatePermutations(remainingAthletes)
+    // Додаємо поточного спортсмена до кожної перестановки
     for (let permutation of remainingPermutations) {
-      result.push([currentElement, ...permutation])
+      allPermutations.push([currentAthlete, ...permutation])
     }
   }
 
-  return result
+  return allPermutations // Повертаємо всі перестановки
 }
-// Генерація всіх можливих результатів
-const results = generatePermutations(athletes)
 
-// Виведення результатів
+const rankings = generatePermutations(athletes)
+
 console.log("All possible results (rankings):")
-results.forEach((result, index) => {
+rankings.forEach((result, index) => {
   console.log(`Result ${index + 1}: ${result.join(", ")}`)
 })
