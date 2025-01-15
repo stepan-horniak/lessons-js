@@ -4,16 +4,30 @@ class Shot {
     this.arrRabbit = arrRabbit
   }
 
-  shot() {
-    return parseInt(prompt(`стріляйте від 1 до${this.arrRabbit.length}`)) - 1
-  }
   showPlayingField() {
-    let res = ``
-    res += `<div>1</div><div>2</div><div>3</div>4<div>5</div><div>6</div>`
+    let field = ``
+    for (let i = 0; i < this.arrRabbit.length; i++) {
+      field += `<div class="field"><span style ='visibility: hidden;'>${this.arrRabbit[i]}</span></div>`
+    }
 
-    return res
+    return field
+  }
+  shot() {
+    const field = this.showPlayingField()
+    let click = document.addEventListener("click", (e) => {
+      if (
+        e.target.textContent === "1" &&
+        e.target.classList.contains("field")
+      ) {
+        e.target.style = "background-color: green;"
+      } else if (e.target.classList.contains("field"))
+        e.target.style = "background-color: red;"
+    })
   }
 }
 const arrRabbit = [1, 0, 0, 0, 1, 0, 0]
 const shot = new Shot(arrRabbit)
-console.log(shot.showPlayingField())
+document.querySelector(
+  ".answer"
+).innerHTML = `${shot.showPlayingField()} стріляй`
+shot.shot()
