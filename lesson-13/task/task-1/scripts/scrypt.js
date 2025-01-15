@@ -1,29 +1,14 @@
 "usestrict"
 let array = [1, 2, 3]
 
-function generateSubsets(array) {
-  const result = [] // Тут ми зберігаємо всі підмножини
-
-  // Функція, яка додає підмножини до результату
-  function helper(index, currentSubset) {
-    // Якщо ми пройшли всі елементи масиву
-    if (index === array.length) {
-      result.push(currentSubset) // Додаємо поточну підмножину до результату
-      return
-    }
-
-    // Розглядаємо два варіанти:
-    // 1. Не додаємо поточний елемент
-    helper(index + 1, currentSubset)
-
-    // 2. Додаємо поточний елемент
-    helper(index + 1, [...currentSubset, array[index]])
+function generate(arr, res) {
+  if (arr.length === 0) console.log(`[${res}] `)
+  else {
+    generate(arr.slice(1), [...res]) //формуємо новий підмасив без першого елемента arr[0]
+    generate(arr.slice(1), [...res, arr[0]]) //формуємо новий підмасив з першим елементом arr[0]
   }
-
-  // Запускаємо рекурсію з першого елемента і порожньої підмножини
-  helper(0, [])
-
-  return result
 }
 
-console.log(generateSubsets(array))
+//         0  1  2
+let arr = [1, 2, 3] //arr.slice(1)   => [ 2, 3 ]
+generate(arr, [])
