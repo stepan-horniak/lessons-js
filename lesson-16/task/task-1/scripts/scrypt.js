@@ -41,32 +41,44 @@ class TDate {
   }
   increaseMonth(month = 1) {
     let totalMonths = this.#month + month
-
+    let monthNumber = Math.floor(((this.#month - 1 + month) % 12) + 1)
     let yearsToAdd = Math.floor((totalMonths - 1) / 12)
-    if (yearsToAdd > 0) {
-      this.increaseYear(yearsToAdd)
-    }
-    this.#month = ((totalMonths - 1) % 12) + 1
+    yearsToAdd > 0 ? this.increaseYear(yearsToAdd) : null
+    this.#month = monthNumber
   }
   reductionMonth(month = 1) {
     let totalMonths = this.#month - month
-    if (totalMonths === 0) totalMonths = 12
-    let yearsToReduce = ((totalMonths - 1 - decrement + 12) % 12) + 1
+    let monthNumber = Math.floor((this.#month - 1 - month + 12) % 12) + 1
+    let yearsToAdd = Math.abs(Math.floor((totalMonths - 1) / 12))
+    yearsToAdd > 0 ? this.reductionYear(yearsToAdd) : null
+    this.#month = monthNumber
+  }
 
-    if (yearsToReduce > 0) {
-      this.reductionYear(yearsToReduce)
-    }
-    this.#month = ((totalMonths - 1) % 12) + 1
+  increaseDay(day = 1) {
+    let totalDay = this.#day + day
+    let dayNumber = Math.floor(((this.#day - 1 + day) % 30) + 1)
+    let monthToAdd = Math.floor((totalDay - 1) / 30)
+    monthToAdd > 0 ? this.increaseMonth(monthToAdd) : null
+    this.#day = dayNumber
+  }
+  reductionDay(day = 1) {
+    let totalDay = this.#day - day
+    let dayNumber = Math.floor((this.#day - 1 - day + 30) % 30) + 1
+    let MonthToAdd = Math.abs(Math.floor((totalDay - 1) / 30))
+    MonthToAdd > 0 ? this.reductionMonth(MonthToAdd) : null
+    this.#day = dayNumber
+  }
+  toString() {
+    return `рік-${this.#year} місяць-${this.#month} день-${this.#day} `
   }
 }
 
 try {
   const date = new TDate(2025, 1, 15)
-  console.log(date)
   //   date.increaseYear(2)
-  date.reductionMonth(2)
-
-  console.log(date)
+  // date.reductionMonth(11)
+  // date.reductionDay()
+  document.querySelector(".answer").innerHTML = date
 } catch (error) {
   console.log(error.message)
 }
