@@ -17,64 +17,13 @@ function getArrayRandomNumbers(userNumRow, userNumColumn) {
 }
 const arrayRundomNumbers = getArrayRandomNumbers(5, 5)
 
-//===========1========================================
+//===========1,2,3,4========================================
 
-let sumElementsRowFirstFromStartToHalf = (arr) => {
+let sumElementsRowColumn = (arr, startRow, endRow, startCol, endCol) => {
   let sum = 0
-  let numberHalfOutside = Math.floor(arr.length / 2)
 
-  for (let row = 0; row < numberHalfOutside; row++) {
-    let numberHalfInside = Math.floor(arr[row].length / 2)
-
-    for (let col = 0; col < numberHalfInside; col++) {
-      sum += arr[row][col]
-    }
-  }
-
-  return sum
-}
-
-//===========2===============
-let sumElementsRowFirstFromHalfToEnd = (arr) => {
-  let sum = 0
-  let numberHalfOutside = Math.floor(arr.length / 2)
-
-  for (let row = 0; row < numberHalfOutside; row++) {
-    let numberHalfInside = Math.floor(arr[row].length / 2)
-
-    for (let col = numberHalfInside; col < arr[row].length; col++) {
-      sum += arr[row][col]
-    }
-  }
-
-  return sum
-}
-
-//===========3===============
-let sumElementsRowSecondFromStartToHalf = (arr) => {
-  let sum = 0
-  let numberHalfOutside = Math.floor(arr.length / 2)
-
-  for (let row = numberHalfOutside; row < arr.length; row++) {
-    let numberHalfInside = Math.floor(arr[row].length / 2)
-
-    for (let col = 0; col < numberHalfInside; col++) {
-      sum += arr[row][col]
-    }
-  }
-
-  return sum
-}
-
-//===========4===============
-let sumElementsRowSecondFromHalfToEnd = (arr) => {
-  let sum = 0
-  let numberHalfOutside = Math.floor(arr.length / 2)
-
-  for (let row = numberHalfOutside; row < arr.length; row++) {
-    let numberHalfInside = Math.floor(arr[row].length / 2)
-
-    for (let col = numberHalfInside; col < arr[row].length; col++) {
+  for (let row = startCol; row < endCol; row++) {
+    for (let col = startRow; col < endRow; col++) {
       sum += arr[row][col]
     }
   }
@@ -88,6 +37,8 @@ let sumRow = (arr, start) => {
   let sum = 0
 
   for (let row = start; row < arr.length; row += 2) {
+    const numberHalfInside = Math.floor(arrayRundomNumbers[row].length / 2)
+
     for (let col = 0; col < arr[row].length; col++) {
       sum += arr[row][col]
     }
@@ -116,14 +67,49 @@ for (let i = 0; i < arrayRundomNumbers.length; i++) {
   arrayShow += `<div>[${arrayRundomNumbers[i]}]</div>`
 }
 
+const endRow = arrayRundomNumbers[0].length
+const numberHalfOutside = Math.floor(arrayRundomNumbers.length / 2)
+
+const endCol = arrayRundomNumbers.length
+const numberHalfInside = Math.floor(arrayRundomNumbers[0].length / 2)
+
 document.querySelector(".answer").innerHTML = `
 <ol>
  <div>масив : [${arrayShow}]</div>
-<li>сума : ${sumElementsRowFirstFromStartToHalf(arrayRundomNumbers)}</li>
-<li>сума : ${sumElementsRowFirstFromHalfToEnd(arrayRundomNumbers)}</li>
-<li>сума : ${sumElementsRowSecondFromStartToHalf(arrayRundomNumbers)}</li>
-<li>сума : ${sumElementsRowSecondFromHalfToEnd(arrayRundomNumbers)}</li>
+ <li>сума : ${sumElementsRowColumn(
+   arrayRundomNumbers,
+   0,
+   numberHalfOutside,
+   0,
+   numberHalfInside
+ )}</li>
+
+ <li>сума : ${sumElementsRowColumn(
+   arrayRundomNumbers,
+   numberHalfOutside,
+   endCol,
+   0,
+   numberHalfInside
+ )}</li>
+ <li>сума : ${sumElementsRowColumn(
+   arrayRundomNumbers,
+   0,
+   numberHalfOutside,
+   numberHalfInside,
+   endRow
+ )}</li>
+
+
+ <li>сума : ${sumElementsRowColumn(
+   arrayRundomNumbers,
+   numberHalfOutside,
+   endCol,
+   numberHalfInside,
+   endRow
+ )}</li>
+
 <li>сума : ${sumRow(arrayRundomNumbers, 0)}</li>
 <li>сума : ${sumRow(arrayRundomNumbers, 1)}</li>
 <li>сума : ${sumEvenRowOddCol(arrayRundomNumbers)}</li>
+
 </ol>`

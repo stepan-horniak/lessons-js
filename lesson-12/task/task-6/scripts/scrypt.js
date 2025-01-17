@@ -26,7 +26,7 @@ function binarySearch(arr, numberName, start = 0, end = arr.length - 1) {
   let middle = Math.floor((start + end) / 2)
 
   if (arr[middle].length === numberName) {
-    return middle
+    return [middle, arr[middle]]
   } else if (arr[middle].length > numberName) {
     return binarySearch(arr, numberName, start, middle - 1)
   } else {
@@ -34,8 +34,9 @@ function binarySearch(arr, numberName, start = 0, end = arr.length - 1) {
   }
 }
 
+let [index, name] = binarySearch(sortedNames, 5)
 document.querySelector(".answer").innerHTML = `
 
 <div>масив : ${names}</div>
-<div>імя 'Olga' під індексом : ${binarySearch(sortedNames, 5)}</div>
+<div>імя ${name} під індексом : ${index}</div>
 `

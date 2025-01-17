@@ -3,6 +3,7 @@
 let names = [
   "John",
   "Alice",
+  "Olga",
   "Peter",
   "Sam",
   "Nina",
@@ -15,7 +16,6 @@ let names = [
   "John",
   "Alice",
   "Peter",
-  "Olga",
   "Sam",
   "Nina",
   "Max",
@@ -49,7 +49,7 @@ function binarySearch(arr, searchName, start = 0, end = arr.length - 1) {
   let middle = Math.floor((start + end) / 2)
 
   if (arr[middle] === searchName) {
-    return middle
+    return [middle, arr[middle]]
   } else if (arr[middle] > searchName) {
     return binarySearch(arr, searchName, start, middle - 1)
   } else {
@@ -57,8 +57,9 @@ function binarySearch(arr, searchName, start = 0, end = arr.length - 1) {
   }
 }
 
+const [index, name] = binarySearch(sortedNames, "Olga")
 document.querySelector(".answer").innerHTML = `
 
 <div>масив : ${names}</div>
-<div>імя 'Olga' під індексом : ${binarySearch(sortedNames, "Olga")}</div>
+<div>імя ${name} під індексом : ${index}</div>
 `
