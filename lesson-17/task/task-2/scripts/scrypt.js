@@ -19,12 +19,16 @@ class CompanyCar {
   }
 }
 
-const auto1 = { driver: "ivan", brand: "toyota", number: "ao4343oa" }
-const newCompanyCar1 = new CompanyCar(auto1)
-console.log(newCompanyCar1)
+try {
+  const auto1 = { driver: "ivan", brand: "toyota", number: "ao4343oa" }
+  const newCompanyCar1 = new CompanyCar(auto1)
+  console.log(newCompanyCar1)
 
-// const auto2 = { driver: "vasia", brand: "bmw", number: "ao2323oa" }
-// const newCompanyCar2 = new CompanyCar(auto2)
-// console.log(newCompanyCar2)
+  const auto2 = { driver: "vasia", brand: "bmw", number: "ao2323oa" }
+  const newCompanyCar2 = new CompanyCar(auto2)
+  console.log(newCompanyCar2)
 
-document.querySelector(".answer").innerHTML = newCompanyCar1
+  document.querySelector(".answer").innerHTML = newCompanyCar1
+} catch (error) {
+  console.log(error.message)
+}

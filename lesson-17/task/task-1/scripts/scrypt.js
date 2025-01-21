@@ -1,11 +1,11 @@
 "use strict"
 class SearchNumbers {
   static countPositiveNumber(arrNumbers) {
-    return arrNumbers.filter((el) => el > 0)
+    return arrNumbers.reduce((count, el) => (el > 0 ? count + 1 : count), 0)
   }
 
   static countNegativeNumber(arrNumbers) {
-    return arrNumbers.filter((el) => el <= 0)
+    return arrNumbers.reduce((count, el) => (el < 0 ? count + 1 : count), 0)
   }
 
   static numbersEntrySomeNumber(arrNumbers, num) {
