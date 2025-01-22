@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="./scripts/scrypt.js"></script>
+    <script src="./scripts/scrypt.js"></script>
     <title>task</title>
 </head>
 <style>
@@ -13,35 +13,37 @@
         max-width: 1200px;
         padding: 0 15px;
         font-size: 25px;
-        white-space: wrap;
     }
 
     button {
         font-size: 25px;
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    input {
+        font-size: 20px;
         padding: 5px;
     }
 </style>
 
 <body>
     <a href="../../index.html">повернутись на головну</a>
-    <p>
-        Задача 1. Розробити калькулятор
-
-    </p>
-    <div class="">відповідь:</div>
+    <p>Задача 1. Розробити калькулятор</p>
     <div>
-        <label>First number <input id="first-number" placeholder="0" type="number"></label>
+        <label>First number: <input id="first-number" placeholder="0" type="number"></label>
     </div>
     <div>
-        <label>Second number <input id="second-number" placeholder="0" type="number"></label>
+        <label>Second number: <input id="second-number" placeholder="0" type="number"></label>
     </div>
     <button id="add">додати</button>
     <button id="minus">відняти</button>
     <button id="multiply">помножити</button>
     <button id="divide">поділити</button>
     <hr>
-    <div><label>результат <input id="result" placeholder="0" type="text"></label></div>
-    <div class="answer"></div>
+    <div>
+        <label>Результат: <input id="result" placeholder="0" type="text" readonly></label>
+    </div>
 </body>
 
 </html>

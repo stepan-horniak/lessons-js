@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="./scripts/scrypt.js"></script>
+    <script src="./scripts/scrypt.js"></script>
     <title>task</title>
 </head>
 <style>
@@ -14,6 +14,12 @@
         padding: 0 15px;
         font-size: 25px;
         white-space: wrap;
+    }
+
+    input,
+    button {
+        font-size: 20px;
+        padding: 5px;
     }
 </style>
 
@@ -26,7 +32,13 @@
 
     </p>
     <div class="">відповідь:</div>
-    <div class="answer"></div>
+    <div><label>Price number <input id="priceNumber" type="number"></label></div>
+    <button id="getTable">get table</button>
+    <hr>
+    <div id="createList"></div>
+    <hr>
+    <button id="getSum">get sum</button>
+    <div id="averageSum"></div>
 </body>
 
 </html>

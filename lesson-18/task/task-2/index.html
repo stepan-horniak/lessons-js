@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="./scripts/scrypt.js"></script>
+    <script src="./scripts/scrypt.js"></script>
     <title>task</title>
 </head>
 <style>
@@ -14,6 +14,19 @@
         padding: 0 15px;
         font-size: 25px;
         white-space: wrap;
+
+    }
+
+    body>* {
+        margin: 5px 0;
+    }
+
+    button {
+        font-size: 25px;
+    }
+
+    input {
+        font-size: 20px;
     }
 </style>
 
@@ -25,7 +38,15 @@
 
     </p>
     <div class="">відповідь:</div>
-    <div class="answer"></div>
+
+    <div><label>Сума в гривнях<input id="sumGrn" type="number" placeholder="0"></label></div>
+    <button id="convert">конвертувати</button>
+    <hr>
+    <div><label>Сума в євро<input id="sumEuro" type="number" placeholder="0"></label></div>
+    <div><label>Сума в долларах<input id="sumUsd" type="number" placeholder="0"></label></div>
+
+
+
 </body>
 
 </html>
