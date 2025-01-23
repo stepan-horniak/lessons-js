@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scripts/scrypt.js"></script>
+    <title>task</title>
+</head>
+<style>
+    body {
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 0 15px;
+        font-size: 25px;
+    }
+
+    .container {}
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cart-product {
+        border: 3px solid black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 15px;
+    }
+
+    .product {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+    }
+
+    .product-image {
+        max-width: 120px;
+    }
+
+    .product-text {
+        font-size: 23px;
+    }
+
+    .count {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+    }
+
+    .count-minus {
+        padding: 10px 15px;
+    }
+
+    .count-text {}
+
+    .count-plus {
+        padding: 10px 15px;
+    }
+
+    .prices {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+    }
+
+    .prices-text {}
+
+    .prices-sum {
+        color: red;
+    }
+
+    .checkbox {
+        width: 30px;
+        height: 30px;
+    }
+
+    .total {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .total-price {}
+</style>
+
+<body>
+    <a href="../../index.html">повернутись на головну</a>
+    <p>
+        Приклад. Дано перелік товарів у кошику. При зміні кількості одиниць товару збільшувати загальну
+        вартість. Створити клас Product, що призначений для маніпуляцій товаром та клас ProductManager
+        що оперує з усіма товарами (через подію передвати ідентифікатор товару та операцію, що зроблена
+
+    </p>
+    <div class="container">
+        <div class="row">
+            <div class="cart-product">
+                <div class="product">
+                    <img class="product-image" src='../task-5/img.png'>
+                    <span class="product-text">коппютер</span>
+                </div>
+                <div class="count">
+                    <button class="count-minus">-</button>
+                    <span class="count-text">0</span>
+                    <button class='count-plus'>+</button>
+                </div>
+                <div class="prices">
+                    <div class="prices-text">до оплати:</div>
+                    <span class="prices-sum">3200грн</span>
+                    <input class="checkbox" type="checkbox" buy='true'>
+                </div>
+            </div>
+            <div class="cart-product">
+                <div class="product">
+                    <img class="product-image" src='../task-5/img.png'>
+                    <span class="product-text">коппютер</span>
+                </div>
+                <div class="count">
+                    <button class="count-minus">-</button>
+                    <span class="count-text">0</span>
+                    <button class='count-plus'>+</button>
+                </div>
+                <div class="prices">
+                    <div class="prices-text">до оплати:</div>
+                    <span class="prices-sum">2500грн</span>
+                    <input class="checkbox" type="checkbox" buy='true'>
+                </div>
+            </div>
+            <div class="cart-product">
+                <div class="product">
+                    <img class="product-image" src='../task-5/img.png'>
+                    <span class="product-text">коппютер</span>
+                </div>
+                <div class="count">
+                    <button class="count-minus">-</button>
+                    <span class="count-text">5</span>
+                    <button class='count-plus'>+</button>
+                </div>
+                <div class="prices">
+                    <div class="prices-text">до оплати:</div>
+                    <span class="prices-sum">5700грн</span>
+                    <label> <input class="checkbox" type="checkbox" buy='true'></label>
+                </div>
+            </div>
+            <div class="total">загалом до оплати :<span class="total-price">333 грн</span></div>
+        </div>
+    </div>
+</body>
+
+</html>
