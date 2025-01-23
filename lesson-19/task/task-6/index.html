@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scripts/scrypt.js"></script>
+    <title>task</title>
+</head>
+<style>
+    body {
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 0 15px;
+        font-size: 25px;
+    }
+
+    li,
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font: inherit;
+    }
+
+    .container {}
+
+    .row {
+        display: flex;
+        gap: 30px;
+
+    }
+
+    .general,
+    .selected {
+        border: 3px solid black;
+        padding: 15px;
+        min-width: 180px;
+    }
+
+    .general__list {}
+
+
+    .general__item,
+    .selected__item {
+        border: 3px solid black;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .selected__item::after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 20px solid #3498db;
+        display: inline-block;
+        transform: rotate(180deg);
+
+    }
+
+    .arrow {
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 20px solid #3498db;
+        display: inline-block;
+
+    }
+
+    .selected {}
+</style>
+
+<body>
+    <a href="../../index.html">повернутись на головну</a>
+    <p>
+        Задача 6. Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому
+        є два стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на
+        зелену стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен
+        переміщається у загальний список.
+
+    </p>
+    <div class="container">
+        <div class="row">
+            <div class="general">
+                <ul class="general__list">
+                    <li class="general__item">Олександр<span class="arrow"></span></li>
+                    <li class="general__item">Марія<span class="arrow"></span></li>
+                    <li class="general__item">Дмитро<span class="arrow"></span></li>
+                    <li class="general__item">Ірина<span class="arrow"></span></li>
+                    <li class="general__item">Максим<span class="arrow"></span></li>
+                    <li class="general__item">Наталя<span class="arrow"></span></li>
+                    <li class="general__item">Андрій<span class="arrow"></span></li>
+                    <li class="general__item">Олена<span class="arrow"></span></li>
+                </ul>
+            </div>
+            <div class="selected">
+                <ul class="selected__list">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
