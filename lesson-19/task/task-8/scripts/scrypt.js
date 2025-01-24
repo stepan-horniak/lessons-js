@@ -1,9 +1,30 @@
 window.addEventListener("load", () => {
-  // .count-minus
-  // .count-text
-  // .count-plus
-  const container = document.querySelector(".container")
-  container.addEventListener("click", (e) => {
+  function writePrice() {
+    const sumList = document.querySelectorAll(".prices-sum")
+    for (const element of sumList) {
+      element.textContent = parseFloat(element.getAttribute("price")) + "грн"
+    }
+  }
+
+  writePrice()
+
+  function calcTotalSum() {
+    const totalPrice = document.querySelector(".total-price")
+    const sumList = document.querySelectorAll(".prices-sum")
+
+    let totalSum = 0
+    for (const element of sumList) {
+      if (element.nextElementSibling.checked) {
+        totalSum += parseFloat(element.textContent)
+      }
+    }
+    totalPrice.textContent = totalSum + "грн"
+  }
+  calcTotalSum()
+
+  //=============================
+
+  function clickCarts(e) {
     const element = e.target
     let priceSum = 0
     if (element.closest(".count-minus")) {
@@ -16,9 +37,10 @@ window.addEventListener("load", () => {
         if (findFather) {
           const currentElSum = findFather.querySelector(".prices-sum")
           priceSum =
-            parseFloat(currentElSum.textContent) *
+            parseFloat(currentElSum.getAttribute("price")) *
             parseFloat(currentElCount.textContent)
-          currentElSum.textContent = priceSum
+          currentElSum.textContent = priceSum + "грн"
+          calcTotalSum()
         }
       }
     }
@@ -30,32 +52,18 @@ window.addEventListener("load", () => {
       //================
       if (findFather) {
         const currentElSum = findFather.querySelector(".prices-sum")
+
         priceSum =
-          parseFloat(currentElSum.textContent) *
+          parseFloat(currentElSum.getAttribute("price")) *
           parseFloat(currentElCount.textContent)
-        currentElSum.textContent = priceSum
+        currentElSum.textContent = priceSum + "грн"
+        calcTotalSum()
       }
     }
-
-    //========
-  })
-
-  //======
+    if (element.hasAttribute("type")) {
+      calcTotalSum()
+    }
+  }
+  const container = document.querySelector(".container")
+  container.addEventListener("click", clickCarts)
 })
-
-// .container
-// .row
-// .cart-product
-// .product
-// .product-image
-// .product-text
-// .count
-// .count-minus
-// .count-text
-// .count-plus
-// .prices
-// .prices-text
-// .prices-sum
-// .checkbox
-// .total
-// .total-price
