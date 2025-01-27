@@ -14,15 +14,69 @@
         padding: 0 15px;
         font-size: 25px;
     }
+
+    #form {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+
+    }
+
+    #form>div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #form>div>input {
+        flex-grow: 1;
+        margin-left: 20px;
+        font-size: 25px;
+
+    }
 </style>
 
 <body>
     <a href="../../index.html">повернутись на головну</a>
     <p>
-
+        Задача 3. На формі вводять 7 числових значень (вік, зріст, вага, заробітна плата, стаж, номер відділу,
+        порядковий номер). Додати подію обробки події click на форму і якщо клік на внутрішньому input, то автоматично
+        замінювати значення його на 0. Використати делегування
 
     </p>
-    <div class="container"></div>
+    <div class="container">
+        <form id="form" action="">
+            <div>
+                <label for="age">вік: </label>
+                <input id="age" name="age" value="29" type="number">
+            </div>
+            <div>
+                <label for="height">зріст: </label>
+                <input id="height" name="height" value="195" type="number">
+            </div>
+            <div>
+                <label for="weight">вага: </label>
+                <input id="weight" name="weight" value="130" type="number">
+            </div>
+            <div>
+                <label for="salary">заробітна плата: </label>
+                <input id="salary" name="salary" value="10000" type="number">
+            </div>
+            <div>
+                <label for="experience">стаж: </label>
+                <input id="experience" name="experience" value="2" type="number">
+            </div>
+            <div>
+                <label for="department">номер відділу:</label>
+                <input id="department" name="department" value="194232" type="number">
+            </div>
+            <div>
+                <label for="serial">порядковий номер: </label>
+                <input id="serial" name="serial" value="3542242" type="number">
+            </div>
+
+
+        </form>
+    </div>
 </body>
 
 </html>

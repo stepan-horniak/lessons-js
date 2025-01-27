@@ -14,15 +14,62 @@
         padding: 0 15px;
         font-size: 25px;
     }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .list,
+    .filter-list {
+        border: 4px solid black;
+        width: 50%;
+
+    }
+
+    input {
+        font-size: 25px;
+        margin: 10px 0;
+    }
+
+    .container-input {
+        text-align: center;
+
+    }
 </style>
 
 <body>
     <a href="../../index.html">повернутись на головну</a>
     <p>
 
-
+        Задача. Динамічний пошук. Є список працівників і поле пошуку. При введенні відображаються усі, які містять
+        вказаний фрагмент
     </p>
-    <div class="container"></div>
+    <div class="container-input">
+        <input class="inputText" type="text">
+    </div>
+    <div class="container">
+        <ul class="list">
+            <li class="item">Шевченко Олександр Петрович</li>
+            <li class="item">Коваль Марія Іванівна</li>
+            <li class="item">Гончар Дмитро Олексійович</li>
+            <li class="item">Ткаченко Ірина Василівна</li>
+            <li class="item">Савченко Олег Миколайович</li>
+            <li class="item">Кравченко Наталія Сергіївна</li>
+            <li class="item">Петренко Андрій Вікторович</li>
+            <li class="item">Сидоренко Оксана Михайлівна</li>
+            <li class="item">Поліщук Богдан Олегович</li>
+            <li class="item">Романюк Анастасія Анатоліївна</li>
+            <li class="item">Верес Артем Олександрович</li>
+            <li class="item">Зінченко Катерина Володимирівна</li>
+            <li class="item">Литвиненко Максим Євгенійович</li>
+            <li class="item">Остапенко Ольга Юріївна</li>
+            <li class="item">Кучеренко Валерій Ігорович</li>
+        </ul>
+        <ul class="filter-list">
+
+        </ul>
+    </div>
 </body>
 
 </html>
