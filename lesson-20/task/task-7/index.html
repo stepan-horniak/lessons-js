@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scripts/scrypt.js"></script>
+    <title>task</title>
+</head>
+<style>
+    body {
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 0 15px;
+        font-size: 25px;
+    }
+
+    select {
+        font-size: 25px;
+    }
+
+    #form {
+        display: flex;
+        gap: 30px;
+        margin-left: 30px;
+    }
+</style>
+
+<body>
+    <a href="../../index.html">повернутись на головну</a>
+    <p>
+        Задача. Дано список автомобілів (марка, рік випуску, ціна). Сформувати елементи для фільтрування з використанням
+        випадаючого списку (контент цих випадаючих списків сформувати у залежності від переданого списку).
+    </p>
+    <div class="container">
+        <h4>фільтри пошуку</h4>
+        <form id="form">
+            <select id="autos">
+                <option price="4000" selected="audi">audi</option>
+                <option price="8000" value="mersedes">mersedes</option>
+                <option price="3000" value="opel">opel</option>
+
+            </select>
+            <select id="years">
+                <option price="3000" selected value="2000">2000</option>
+                <option price="5000" value="2005">2005</option>
+                <option price="8000" value="2015">2015</option>
+            </select>
+        </form>
+    </div>
+</body>
+
+</html>
