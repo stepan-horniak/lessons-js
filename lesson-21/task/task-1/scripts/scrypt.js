@@ -1,5 +1,5 @@
 window.addEventListener("load", () => {
-  //========================
+  //=========1===============
   class SwovTimeUserWebsite {
     constructor(container) {
       this.container = document.querySelector(container)
@@ -40,7 +40,7 @@ window.addEventListener("load", () => {
   }
   const swovTimeUserWebsite = new SwovTimeUserWebsite(".container")
   swovTimeUserWebsite.render()
-  //==================
+  //=========2=========
   class ShowTimeStartProcedures {
     constructor(container) {
       this.container = document.querySelector(container)
@@ -114,7 +114,7 @@ window.addEventListener("load", () => {
 
     userTime() {
       let labelEl = document.createElement("label")
-      labelEl.textContent = "Введіть час початку процедури :"
+      labelEl.textContent = "2) Введіть час початку процедури :"
 
       let inputEl = document.createElement("input")
       inputEl.style.fontSize = "25px"
@@ -135,7 +135,7 @@ window.addEventListener("load", () => {
   const showTimeStartProcedures = new ShowTimeStartProcedures(".container")
   showTimeStartProcedures.render()
 
-  //====================
+  //==========3==========
 
   class ShowTimeToEndWorkday {
     constructor(container) {
@@ -160,14 +160,14 @@ window.addEventListener("load", () => {
       let diff = endTime - now
 
       if (diff <= 0)
-        return (this.wrapperTime.textContent = "робочий день закінчився")
+        return (this.wrapperTime.textContent = "3) робочий день закінчився")
 
       const hoursLeft = Math.floor(diff / (1000 * 60 * 60))
       diff %= 1000 * 60 * 60
       const minutesLeft = Math.floor(diff / (1000 * 60))
       const secondsLeft = Math.floor((diff % (1000 * 60)) / 1000)
 
-      return (this.wrapperTime.textContent = `До кінця робочого дня алишилось: ${hoursLeft} годин ${minutesLeft} хвилин ${secondsLeft} секунд`)
+      return (this.wrapperTime.textContent = `3) До кінця робочого дня алишилось: ${hoursLeft} годин ${minutesLeft} хвилин ${secondsLeft} секунд`)
     }
 
     render() {
@@ -178,5 +178,175 @@ window.addEventListener("load", () => {
   const showTimeToEndWorkday = new ShowTimeToEndWorkday(".container")
   showTimeToEndWorkday.render()
 
-  //===================
+  //=========8==========
+
+  class ManySecondsPausedMuoseMovement {
+    constructor(container) {
+      this.container = document.querySelector(container)
+      this.moveMouseTime = this.moveMouseTime.bind(this)
+    }
+    createWrappper() {
+      const divEl = document.createElement("div")
+      divEl.style.border = "3px solid black "
+      divEl.style.fontSize = "25px"
+      divEl.style.padding = "10px"
+
+      divEl.append(this.calkSeconds())
+
+      return divEl
+    }
+    onloadPageTime() {
+      const time = Date.now()
+      this.onloadTime = time
+      return time
+    }
+    moveMouseTime() {
+      const time = Date.now()
+      this.moveTime = time
+
+      this.calkSeconds()
+      document.body.removeEventListener("mousemove", this.moveMouseTime)
+      this.container.append(this.createWrappper())
+      return time
+    }
+
+    calkSeconds() {
+      let time = this.moveTime - this.onloadTime
+
+      return `8) пройшло ${Math.floor(time / 1000)} секунди`
+    }
+    render() {
+      this.onloadPageTime()
+      document.body.addEventListener("mousemove", this.moveMouseTime)
+    }
+    //========================
+  }
+
+  const manySecondsPausedMuoseMovement = new ManySecondsPausedMuoseMovement(
+    ".container"
+  )
+  manySecondsPausedMuoseMovement.render()
+  //==========12==========
+
+  class CompareTimeSortBubleAndInsert {
+    constructor(container) {
+      this.container = document.querySelector(container)
+    }
+
+    getRandomNumber(max = 800, min = 1) {
+      return min + Math.floor(Math.random() * max)
+    }
+    getArrayNumbers(number = 1000) {
+      const arr = []
+      for (let i = 0; i < number; i++) {
+        arr.push(this.getRandomNumber())
+      }
+      return arr
+    }
+    getTimeNow() {
+      return performance.now()
+    }
+    createWrapper() {
+      const divEl = document.createElement("div")
+      divEl.style.border = "3px solid black "
+      divEl.style.fontSize = "25px"
+      divEl.style.padding = "10px"
+
+      this.wrapper = divEl
+      return divEl
+    }
+    sortInsert(arr) {
+      for (let i = 1; i < arr.length; i++) {
+        let key = arr[i]
+        let j
+        for (j = i - 1; j >= 0 && arr[j] > key; j--) {
+          arr[j + 1] = arr[j]
+        }
+
+        arr[j + 1] = key
+      }
+      return arr
+    }
+    sortBuble(arr) {
+      let changing = true
+      let i
+      while (changing) {
+        changing = false
+        for (i = 0; i < arr.length - 1; i++) {
+          if (arr[i] > arr[i + 1]) {
+            const r = arr[i + 1]
+            arr[i + 1] = arr[i]
+            arr[i] = r
+            changing = true
+          }
+        }
+      }
+    }
+    timesSortBuble() {
+      const arr = [...this.arr]
+      const startTimeBuble = this.getTimeNow()
+
+      this.sortBuble(arr)
+      const endTimeBuble = this.getTimeNow()
+
+      const divEl = document.createElement("div")
+      divEl.textContent = `12) час сортування бульбашкою ${
+        endTimeBuble - startTimeBuble
+      } мілісекунд`
+      return divEl
+    }
+    timesSortInsert() {
+      const arr = [...this.arr]
+      const startTimeInsert = this.getTimeNow()
+
+      this.sortInsert(arr)
+      const engTimeInsert = this.getTimeNow()
+
+      const divEl = document.createElement("div")
+      divEl.textContent = `час сортування вставкою ${
+        engTimeInsert - startTimeInsert
+      } мілісекунд`
+
+      return divEl
+    }
+    timesSortQuicksort() {
+      const arr = [...this.arr]
+      const startTimeInsert = this.getTimeNow()
+
+      arr.sort((a, b) => a - b)
+      const engTimeInsert = this.getTimeNow()
+
+      const divEl = document.createElement("div")
+      divEl.textContent = `час сортування Quicksort ${
+        engTimeInsert - startTimeInsert
+      } мілісекунд`
+
+      return divEl
+    }
+
+    render() {
+      const start = this.getTimeNow()
+      this.createWrapper()
+      this.arr = this.getArrayNumbers()
+      this.wrapper.append(this.timesSortBuble())
+      this.wrapper.append(this.timesSortInsert())
+      this.wrapper.append(this.timesSortQuicksort())
+
+      const end = this.getTimeNow()
+
+      const divEl = document.createElement("div")
+      divEl.textContent = `загальний час класу ${end - start} мілісекунд`
+      this.wrapper.append(divEl)
+
+      this.container.append(this.wrapper)
+    }
+    //==========
+  }
+  const compareTimeSortBubleAndInsert = new CompareTimeSortBubleAndInsert(
+    ".container"
+  )
+  compareTimeSortBubleAndInsert.render()
+  //=====================
+
+  //============
 })
